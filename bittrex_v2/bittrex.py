@@ -19,9 +19,24 @@ from requests import post as _post
 from requests import get as _get
 from decimal import Decimal
 
-PUBLIC_METHODS = [
+PUBLIC_COMMANDS = [
+	'getmarketsummaries',
+	'getcurrencies',
+	'getwallethealth'
+	]
+
+MARKETS_COMMANDS = [
 	'getmarketsummaries',
 	'',
+	]
+
+PRIVATE_COMMANDS = [
+	
+	]
+
+CURRENCIES_COMMANDS = [
+	'getcurrencies',
+	'getwallethealth'
 	]
 
 class BittrexError(Exception):
@@ -33,8 +48,8 @@ class Bittrex(object):
 	Used for requesting Bittrex with API key and API secret
 
 	"""
-	def __init__(self, api_key, api_secret, timeout=1,
-				parse_float=Decimal, parse_int=int):
+	def __init__(self, api_key=None, api_secret=None, 
+				timeout=1, parse_float=Decimal, parse_int=int):
 		"""
 		api_key = str api key supplied by Bittrex
 		api_secret = str secret hash supplied by Poloniex
@@ -45,7 +60,6 @@ class Bittrex(object):
 		"""
 		self.api_key = str(api_key) if api_key else None
 		self.api_secret = str(api_secret) if api_secret else None
-		self.logger = logger
 		self.timeout = timeout
 		self.parse_float, self.parse_int = \
 			parse_float, parse_int
@@ -81,14 +95,32 @@ class Bittrex(object):
 				raise BittrexError("A Key and Secret needed!")
 			pass
 		elif command in PUBLIC_COMMANDS:
-			ret = _get('https://poloniex.com/public?' + _urlencode(args),
-						timeout=self.timeout)
+			base_url += 'pub/'
+			if command in MARKETS_COMMANDS:
+				base_url += 'markets/'
+			elif command in CURRENCIES_COMMANDS:
+				base_url += 'currencies/'
+
+			url = base_url + command
+
+			print(url)
+			if len(args.keys()) > 0:
+				ret = _get(url + '?' + _urlencode(args),
+						   timeout=self.timeout)
+			else:
+				ret = _get(url, timeout=self.timeout)
 			
 			jsonout = _loads(ret.text,
 							 parse_float=Decimal,
 							 parse_int=int)
 			return jsonout
+		else:
+			raise PoloniexError("Invalid Command!: %s" % command)
 
+	""" ###########################################
+		############  PUBLIC COMMANDS  ############
+		###########################################
+	"""
 	def get_market_summaries(self):
 		"""
 		Used to get the open and available trading markets
@@ -98,3 +130,23 @@ class Bittrex(object):
 		:rtype : dict
 		"""
 		return self.__call__('getmarketsummaries')
+
+	def get_currencies(self):
+		"""
+		Used to get all the avalables currencies
+		at Bittrex along with other meta data.
+
+		:return: Available market info in JSON
+		:rtype : dict
+		"""
+		return self.__call__('getcurrencies')
+
+	def get_wallet_health(self):
+		"""
+		Used to get all the avalables currencies
+		at Bittrex along with other meta data.
+
+		:return: Available market info in JSON
+		:rtype : dict
+		"""
+		return self.__call__('getwallethealth')

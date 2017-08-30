@@ -7,14 +7,13 @@
 *.o
 *.so
 *.pyc
-*.json
 *.html
 __pycache__
 
 # Packages #
 ############
-# it's better to unpack these files and commit the raw source
-# git has its own built in compression methods
+# It's better to unpack these files and commit the raw source
+# 		git has its own built in compression methods
 *.7z
 *.dmg
 *.gz

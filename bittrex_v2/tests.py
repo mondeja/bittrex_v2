@@ -15,15 +15,20 @@ from datetime import datetime
 class ConfigTest:
 	"""
 	Configuration for Bittrex API V2 tests. 
+	
+	:param ORDER_UUID: Closed order UUID for test get_order() method
+	:type ORDER_UUID: str
 
-	:param ORDER_UUID: An order UUID for testing
+	:param SHOW_ENDPOINTS: Show url endpoints in 
+		tests (True) or not (False)
 	:type ORDER_UUID: str
 	"""
 	PAIR = 'BTC-ETH'
 	COIN = 'BTC'
-	SHOW_ENDPOINTS = True
 
-	ORDER_UUID = 'c39aaa2f-22e9-4ff7-8c30-d92938bfc0e6'
+	SHOW_ENDPOINTS = True
+	ORDER_UUID = ''
+
 	def __init__(self):
 		pass
 

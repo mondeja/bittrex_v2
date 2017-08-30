@@ -1,6 +1,6 @@
 <h1>bittrex_v2</h1>
 
-Bittrex V2 API wrapper for Python3. The API version is currently in beta (some endpoints may be fallen, see Testing section below). Inspired in [platelminto](https://github.com/platelminto) [java wrapper](https://github.com/platelminto/java-bittrex-2).
+Bittrex V2 API wrapper for Python3. The API version is currently in beta (some endpoints may be fallen, see Testing section below). Inspired in [platelminto](https://github.com/platelminto)'s [java wrapper](https://github.com/platelminto/java-bittrex-2).
 
 ### Installation
 

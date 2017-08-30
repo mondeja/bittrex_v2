@@ -19,7 +19,7 @@ Install bittrex_v2 by running:
 ```
 
 ##### - Private commands:
-```
+```python
 >>> b = Bittrex(api_key="<your api key>",
 ...             api_secret="<your api secret>")
 >>> b.get_open_orders('BTC-ETH')

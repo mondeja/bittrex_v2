@@ -21,7 +21,7 @@ class ConfigTest:
 
 	:param SHOW_ENDPOINTS: Show url endpoints in 
 		tests (True) or not (False)
-	:type ORDER_UUID: str
+	:type SHOW_ENDPOINTS: bool
 	"""
 	PAIR = 'BTC-ETH'
 	COIN = 'BTC'

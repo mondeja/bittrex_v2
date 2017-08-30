@@ -42,7 +42,7 @@ ________________________________
 |`get_deposit_address`     | ✔ | ✘ | ✔ |
 |`generate_deposit_address`| ✔ | ✘ | ✔ |
 
-____________________________________-
+____________________________________
 
 #### Contribute
 
@@ -51,11 +51,11 @@ ____________________________________-
 
 #### Support
 
-If you are having issues, please let us know.
+If you are having issues, please let me know (mondejar1994@gmail.com).
 
 #### License
 
-Copyright (c) 2017 Álvaro Mondéjar Rubio.
+Copyright (c) 2017 Álvaro Mondéjar Rubio <mondejar1994@gmail.com>.
 All rights reserved.
 
 Redistribution and use in source and binary forms are permitted

@@ -46,8 +46,8 @@ ____________________________________
 
 #### Contribute
 
-- Issue Tracker: github.com/mondeja/bittrex_v2/issues
-- Source Code: github.com/mondeja/bittrex_v2
+- Issue Tracker: https://github.com/mondeja/bittrex_v2/issues
+- Source Code: https://github.com/mondeja/bittrex_v2
 
 #### Support
 
@@ -71,4 +71,13 @@ THIS SOFTWARE IS PROVIDED “AS IS” AND WITHOUT ANY EXPRESS OR IMPLIED
 WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED WARRANTIES OF
 MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 
+### Buy me a coffee? :)
+
+If you feel like buying me a coffee (or a beer?), donations are welcome:
+
+```
+BTC : 1LfUF4AcvH7Wd1wTc7Mmqobj4AypUbpvN5
+ETH : 0x7428fE875226880DaD222c726F6340eec42Db567
+STEEM: @mondeja
+```
 

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 from distutils.core import setup
@@ -14,6 +14,6 @@ setup(
     packages = ['bittrex_v2'],
     description = 'Python wrapper for Bittrex API V2, currently in beta.',
     long_description = open('README.md','r').read(),
-    keywords = ['python', 'bittrex', 'cryptocurrency', 'API', 'wrapper', 'V2'],
+    keywords = ['python', 'bittrex', 'exchange', 'cryptocurrency', 'API', 'wrapper', 'V2'],
     install_requires = ['requests']
 )

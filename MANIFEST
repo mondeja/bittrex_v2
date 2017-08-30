@@ -1,6 +1,6 @@
-STATS
 COPYING
 setup.py
 README.md
-coinmarketcap/core.py
-coinmarketcap/__init__.py
+bittrex_v2/bittrex.py
+bittrex_v2/tests.py
+bittrex_v2/__init__.py

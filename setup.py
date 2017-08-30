@@ -4,15 +4,16 @@
 from distutils.core import setup
 
 setup(
-    name = 'pymarketcap',
-    version = '3.0.1',
-    url = 'https://github.com/mondeja/pymarketcap',
-    download_url = 'https://github.com/mondeja/pymarketcap/archive/master.zip',
-    author = 'Álvaro Mondéjar <mondejar1994@gmail.com>',
+    name = 'bittrex_v2',
+    version = '1.0.1',
+    url = 'https://github.com/mondeja/bittrex_v2',
+    download_url = 'https://github.com/mondeja/bittrex_v2/archive/master.zip',
+    author = 'Álvaro Mondéjar Rubio <mondejar1994@gmail.com>',
     author_email = 'mondejar1994@gmail.com',
-    license = 'Apache v2.0 License',
-    packages = ['pymarketcap'],
-    description = 'Python2 API for coinmarketcap.com.',
+    license = 'BSD License',
+    packages = ['bittrex_v2'],
+    description = 'Python wrapper for Bittrex API V2, currently in beta.',
     long_description = open('README.md','r').read(),
-    keywords = ['Scrypt', 'SHA256d', 'cryptocurrency', 'API', 'wrapper', 'parser', 'json', 'LTC', 'Litecoin', 'BTC', 'Bitcoin'],
+    keywords = ['python', 'bittrex', 'cryptocurrency', 'API', 'wrapper', 'V2'],
+    install_requires = ['requests']
 )

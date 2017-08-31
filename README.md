@@ -2,7 +2,7 @@
 
 Bittrex API v2 wrapper for Python3. Inspired in [platelminto](https://github.com/platelminto)'s [java wrapper](https://github.com/platelminto/java-bittrex-2). The API version is currently in beta (some endpoints may be fallen, see Testing section below). 
 
-### Installation
+## Installation
 
 Install bittrex_v2 by running:
 
@@ -10,7 +10,7 @@ Install bittrex_v2 by running:
     cd bittrex_v2
     python setup.py install
 
-### Example usage
+## Example usage
 ##### - Public commands:
 ```python
 >>> from bittrex_v2 import Bittrex
@@ -25,50 +25,46 @@ Install bittrex_v2 by running:
 >>> b.get_open_orders('BTC-ETH')
 ```
 
-### Testing
+## Testing
 Bittrex API v2 is currently in beta version, so that certain endpoints may be fallen. Execute `tests.py` for check all. 
 
 For test private commands methods you must provide key and secret in `secrets.json` file. For test `get_order(<uuid>)` method, you must provide a close order uuid in CONFIGURATION SECTION (`tests.py`).
 
-________________________________
+## Contribute
+
+- Issue Tracker: https://github.com/mondeja/bittrex_v2/issues
+- Source Code: https://github.com/mondeja/bittrex_v2
 
 ### Development progress:
 
 |**Method**|**Developed**|**Documented**|**Tested**|
 |:-------------------------|:-:|:-:|:-:|
 |**PUBLIC COMMANDS**                   |
-|`get_market_summary`      | ✔ | ✘ | ✔ |
-|`get_market_summaries`    | ✔ | ✘ | ✔ |
-|`get_currencies`          | ✔ | ✘ | ✔ |
-|`get_wallet_health`       | ✔ | ✘ | ✔ |
-|`get_market_orderbook`    | ✔ | ✘ | ✔ |
-|`get_ticks`               | ✔ | ✘ | ✔ |
+|`get_market_summary`      | ✔ | ✔ | ✔ |
+|`get_market_summaries`    | ✔ | ✔ | ✔ |
+|`get_currencies`          | ✔ | ✔ | ✔ |
+|`get_wallet_health`       | ✔ | ✔ | ✔ |
+|`get_market_orderbook`    | ✔ | ✔ | ✔ |
+|`get_ticks`               | ✔ | ✔ | ✔ |
 |**PRIVATE COMMANDS**                  |
-|`get_order`               | ✔ | ✘ | ✔ |
-|`get_open_orders`         | ✔ | ✘ | ✔ |
-|`get_order_history`       | ✔ | ✘ | ✔ |
-|`get_balance`             | ✔ | ✘ | ✔ |
-|`cancel`                  | ✔ | ✘ | ✔ |
-|`withdraw`                | ✔ | ✘ | ✔ |
-|`place_order`             | ✔ | ✘ | ✘ |
-|`get_withdrawal_history`  | ✔ | ✘ | ✔ |
-|`get_deposit_history`     | ✔ | ✘ | ✔ |
-|`get_pending_deposits`    | ✔ | ✘ | ✔ |
-|`get_deposit_address`     | ✔ | ✘ | ✔ |
-|`generate_deposit_address`| ✔ | ✘ | ✔ |
+|`get_order`               | ✔ | ✔ | ✔ |
+|`get_open_orders`         | ✔ | ✔ | ✔ |
+|`get_order_history`       | ✔ | ✔ | ✔ |
+|`get_balance`             | ✔ | ✔ | ✔ |
+|`cancel`                  | ✔ | ✔ | ✔ |
+|`withdraw`                | ✔ | ✔ | ✘ |
+|`place_order`             | ✔ | ✔ | ✘ |
+|`get_withdrawal_history`  | ✔ | ✔ | ✔ |
+|`get_deposit_history`     | ✔ | ✔ | ✔ |
+|`get_pending_deposits`    | ✔ | ✔ | ✔ |
+|`get_deposit_address`     | ✔ | ✔ | ✔ |
+|`generate_deposit_address`| ✔ | ✔ | ✔ |
 
-____________________________________
-
-#### Contribute
-
-- Issue Tracker: https://github.com/mondeja/bittrex_v2/issues
-- Source Code: https://github.com/mondeja/bittrex_v2
-
-#### Support
+## Support
 
 If you are having issues, please let me know (mondejar1994@gmail.com).
 
-#### License
+## License
 
 Copyright (c) 2017 Álvaro Mondéjar Rubio <mondejar1994@gmail.com>.
 All rights reserved.

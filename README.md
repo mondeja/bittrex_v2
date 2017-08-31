@@ -53,7 +53,7 @@ For test private commands methods you must provide key and secret in `secrets.js
 |`get_balance`             | ✔ | ✔ | ✔ |
 |`cancel`                  | ✔ | ✔ | ✔ |
 |`withdraw`                | ✔ | ✔ | ✘ |
-|`place_order`             | ✔ | ✔ | ✘ |
+|`place_order`             | ✔ | ✘ | ✘ |
 |`get_withdrawal_history`  | ✔ | ✔ | ✔ |
 |`get_deposit_history`     | ✔ | ✔ | ✔ |
 |`get_pending_deposits`    | ✔ | ✔ | ✔ |

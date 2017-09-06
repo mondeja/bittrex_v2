@@ -475,10 +475,3 @@ class Bittrex(object):
         return self.__call__('balance', "generatedepositaddress", 
                              {"currencyname": currency})
 
-
-
-
-
-
-
-

@@ -7,5 +7,6 @@ __author__ = 'Álvaro Mondéjar Rubio <mondejar1994@gmail.com>'
 __repo__    = 'https://github.com/mondeja/bittrex_v2'
 __license__ = 'BSD License'
 
-from .bittrex import Bittrex
-
+from .bittrex import (Bittrex, 
+                      PUBLIC_COMMANDS,
+                      PRIVATE_COMMANDS)

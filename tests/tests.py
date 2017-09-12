@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import unittest
-from bittrex import Bittrex, BittrexError
+from bittrex_v2 import Bittrex, BittrexError
 from decimal import Decimal
 from datetime import datetime
 
@@ -26,7 +26,7 @@ class ConfigTest:
     PAIR = 'BTC-ETH'
     COIN = 'BTC'
 
-    SHOW_ENDPOINTS = True
+    SHOW_ENDPOINTS = False
     ORDER_UUID = ''
 
     def __init__(self):

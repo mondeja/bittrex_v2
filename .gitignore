@@ -8,6 +8,12 @@
 *.so
 *.pyc
 *.html
+.env
+
+# Directories #
+###############
+build/
+env/
 __pycache__
 
 # Packages #

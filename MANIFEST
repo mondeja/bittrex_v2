@@ -2,5 +2,7 @@ COPYING
 setup.py
 README.md
 bittrex_v2/bittrex.py
-bittrex_v2/tests.py
 bittrex_v2/__init__.py
+bittrex_v2/tests/tests.py
+bittrex_v2/tests/secrets.json
+bittrex_v2/tests/__init__.py

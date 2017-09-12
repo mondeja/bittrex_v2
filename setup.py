@@ -11,7 +11,7 @@ setup(
     author = 'Álvaro Mondéjar Rubio <mondejar1994@gmail.com>',
     author_email = 'mondejar1994@gmail.com',
     license = 'BSD License',
-    packages = ['bittrex_v2', 'bittrex_v2/tests'],
+    packages = ['bittrex_v2', 'bittrex_v2.tests'],
     description = 'Python wrapper for Bittrex API V2, currently in beta.',
     long_description = open('README.md','r').read(),
     keywords = ['python', 'bittrex', 'exchange', 'cryptocurrency', 'API', 'wrapper', 'v2'],

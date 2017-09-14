@@ -2,6 +2,8 @@
 
 Bittrex API v2 wrapper for Python3. Inspired in [platelminto](https://github.com/platelminto)'s [java wrapper](https://github.com/platelminto/java-bittrex-2). The API version is currently in beta (some endpoints may be fallen, see Testing section below). 
 
+Currently the `place_order()` method is not stable! Use a wrapper for Bittrex V1.1 API instead for place orders.
+
 ## Installation
 
 Install bittrex_v2 by running:

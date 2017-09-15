@@ -49,8 +49,8 @@ def test_result(self, ret, result_type=list):
 
 class TestPublicBittrex(unittest.TestCase):
     """
-    Integration tests for the Bittrex public commands. These will fail 
-    in the absence of an internet connection or if Poloniex API goes down.
+    Integration tests for Bittrex public commands. These will fail 
+    in the absence of an internet connection or if Bittrex API V2 goes down.
     """
     def setUp(self):
         self.bittrex = Bittrex(timeout=10,

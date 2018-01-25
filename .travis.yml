@@ -1,0 +1,15 @@
+language: python
+os:
+  - linux
+python:
+  - '3.6'
+  - nightly
+install:
+  - pip install -r requirements.txt
+  - python setup.py install
+script:
+  # Unittests
+  - cd bittrex_v2/tests && python tests.py
+branches:
+  only:
+    - master

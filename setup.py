@@ -8,7 +8,7 @@ setup(
     version = '1.0.1',
     url = 'https://github.com/mondeja/bittrex_v2',
     download_url = 'https://github.com/mondeja/bittrex_v2/archive/master.zip',
-    author = 'Álvaro Mondéjar Rubio <mondejar1994@gmail.com>',
+    author = 'Álvaro Mondéjar Rubio',
     author_email = 'mondejar1994@gmail.com',
     license = 'BSD License',
     packages = ['bittrex_v2', 'bittrex_v2.tests'],

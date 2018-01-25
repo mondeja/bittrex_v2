@@ -9,7 +9,7 @@ from hmac import new as _new
 from hashlib import sha512 as _sha512
 from time import time, sleep
 # 3rd party
-#from requests.exceptions import RequestException
+from requests.exceptions import HTTPError
 from requests import get as _get
 
 
@@ -37,7 +37,7 @@ PRIVATE_COMMANDS = [
     'getpendingdeposits',
     'getdeposithistory',
     'getdepositaddress',
-    'generatedepositaddress',    
+    'generatedepositaddress',
     ]
 
 
@@ -45,7 +45,7 @@ class BittrexError(Exception):
     """
     Exception for catch invalid commands and other repsonses
     that don't match with 200 code responses.
-    """ 
+    """
     def __init__(self, err):
         pass
 
@@ -57,15 +57,15 @@ class Bittrex(object):
 
     :param api_key: Api key supplied by Bittrex
     :type api_key: str
-        
+
     :param api_secret: Api secret supplied by Bittrex
     :type api_secret: str
-        
+
     :param timeout: time in sec to wait for an api response
         (otherwise 'requests.exceptions.TimeoutError' is raised)
         (default == 5)
     :type timeout: int
-        
+
     :param parse_float: parser used by json.loads() for
             retrieve float type returns (default == Decimal)
     :type parse_float: any
@@ -73,13 +73,13 @@ class Bittrex(object):
     :param parse_float: parser used by json.loads() for
         retrieve int type returns (default == int)
     :type parse_float: any
-        
+
     :param debug_endpoint: With True prints url endpoint
         used in calls (default == False)
     :type debug_endpoint: bool
 
     """
-    def __init__(self, api_key=None, api_secret=None, 
+    def __init__(self, api_key=None, api_secret=None,
                 timeout=5, parse_float=Decimal, parse_int=int,
                 debug_endpoint=False):
 
@@ -102,7 +102,7 @@ class Bittrex(object):
         - raises 'bittrex.BittrexError' if an api key or secret is missing
             (and the command is 'private') or if the <command> is not valid
         - returns decoded json api message
-        
+
         :param group: Param for queries classification in API
         :type command: str
 
@@ -169,23 +169,10 @@ class Bittrex(object):
         ############  PUBLIC COMMANDS  ############
         ###########################################
     """
-
-    def get_markets(self):
-        """
-        Used to get all markets available at Bittrex
-        along with other meta data.
-
-        pub/markets/getmarkets
-
-        :return: Available market info in JSON
-        :rtype : dict
-        """
-        return self.__call__('markets', 'getmarkets')
-
     def get_market_summary(self, market):
         """
-        Used to get information about a given market 
-        
+        Used to get information about a given market
+
         :param market: String literal for the market (ex: BTC-LTC)
         :type market: str
 
@@ -194,7 +181,7 @@ class Bittrex(object):
         :return: Available market summary in JSON
         :rtype : dict
         """
-        return self.__call__('market', 'getmarketsummary', 
+        return self.__call__('market', 'getmarketsummary',
                             {'marketname': market})
 
     def get_market_summaries(self):
@@ -213,7 +200,7 @@ class Bittrex(object):
         """
         Used to get all availables currencies
         at Bittrex along with other meta data.
-        
+
         pub/currencies/getcurrencies
 
         :return: Available currencies info in JSON
@@ -224,7 +211,7 @@ class Bittrex(object):
     def get_wallet_health(self):
         """
         Used to get information about all
-        availables currencies status at Bittrex 
+        availables currencies status at Bittrex
         along with other meta data.
 
         pub/currencies/getwallethealth
@@ -238,7 +225,7 @@ class Bittrex(object):
     def get_market_orderbook(self, market):
         """
         Used to get information about a given market orderbook
-        
+
         pub/currencies/getmarketorderbook
 
         :param market: String literal for the market (ex: BTC-LTC)
@@ -252,9 +239,9 @@ class Bittrex(object):
 
     def get_ticks(self, market, period):
         """
-        Used to data chart information about a given market 
+        Used to data chart information about a given market
         in a given period.
-        
+
         pub/market/GetTicks?marketName=<market>&tickInterval=<period>
 
         :param market: String literal for the market (ex: BTC-LTC)
@@ -278,7 +265,7 @@ class Bittrex(object):
     def get_order(self, uuid):
         """
         Returns information about a specific order (by UUID)
-        
+
         :param uuid: String literal for the orderId
         :type uuid: str
 
@@ -289,11 +276,11 @@ class Bittrex(object):
                             {'orderid': uuid})
 
     def get_open_orders(self, market=None):
-        """ 
+        """
         Returns all of your currently open orders if
         market == None, else returns all of your
         currently open orders in the given market.
-        
+
         :param market: String literal for the market (optional)
         :type market: str
 
@@ -306,7 +293,7 @@ class Bittrex(object):
         return self.__call__('orders', 'getopenorders')
 
     def get_order_history(self):
-        """ 
+        """
         Returns all of your order history
 
         :return: Currently order history
@@ -319,7 +306,7 @@ class Bittrex(object):
         Returns all of your currently balance if
         market == None, else returns your balance
         for a given currency.
-        
+
         :param currency: String literal for the currency (optional)
         :type market: str
 
@@ -334,7 +321,7 @@ class Bittrex(object):
     def cancel(self, uuid):
         """
         Cancel an order by given uuid
-        
+
         :param uuid: String literal for the orderId
         :type uuid: str
 
@@ -345,7 +332,7 @@ class Bittrex(object):
                                  'success': False,              (bool)
                                  'result': None}              (NoneType)
 
-        Successed response:     {'success': True,  
+        Successed response:     {'success': True,
                                  'result': None,
                                  'message': ''}
         """
@@ -354,7 +341,7 @@ class Bittrex(object):
 
     def withdraw(self, currency, amount, address):
         """
-        Withdraws a specific amount of a certain 
+        Withdraws a specific amount of a certain
         currency to the specified address
 
         :param currency: Currency symbol to withdraw
@@ -367,15 +354,15 @@ class Bittrex(object):
         :type amount: str
         """
         return self.__call__('balance', 'withdrawcurrency',
-                             {"currencyname": currency, 
-                              "quantity": amount, 
+                             {"currencyname": currency,
+                              "quantity": amount,
                               "address": address})
 
     def place_order(self, tradetype, market, amount, rate,
-                    ordertype, timeInEffect, 
+                    ordertype, timeInEffect,
                     conditionType=None, target=None):
-        """    
-        Places a buy/sell order with specific conditions 
+        """
+        Places a buy/sell order with specific conditions
         (target only required if a condition is in place)
         """
 
@@ -385,11 +372,11 @@ class Bittrex(object):
             method = "tradesell"
 
         if not conditionType:
-            conditionType = "CONDITION_NONE"
+            conditionType = "NONE"
         if not target:
             target = "0"
-        options = {"marketname": market, 
-                   "ordertype": ordertype, 
+        options = {"marketname": market,
+                   "ordertype": ordertype,
                    "quantity": str(amount),
                    "rate": str(rate),
                    "timeineffect": str(timeInEffect),
@@ -402,7 +389,7 @@ class Bittrex(object):
         """
         Returns your complete withdrawal history if
         currency == None, else returns your withdrawal
-        history for a given currency 
+        history for a given currency
 
         :param currency: String literal for the currency (optional)
         :type market: str
@@ -412,14 +399,14 @@ class Bittrex(object):
         """
         if not currency:
             currency = ""
-        return self.__call__('balance', "getwithdrawalhistory", 
+        return self.__call__('balance', "getwithdrawalhistory",
                              {"currencyname": currency})
 
     def get_deposit_history(self, currency=None):
         """
-        Returns your deposits history for all currencies 
+        Returns your deposits history for all currencies
         if currency == None, else returns your deposit history
-        history for a given currency 
+        history for a given currency
 
         :param currency: String literal for the currency (optional)
         :type market: str
@@ -429,14 +416,14 @@ class Bittrex(object):
         """
         if not currency:
             currency = ""
-        return self.__call__('balance', "getdeposithistory", 
+        return self.__call__('balance', "getdeposithistory",
                              {"currencyname": currency})
 
     def get_pending_deposits(self, currency=None):
         """
-        Returns your pending deposits for all currencies 
-        if currency == None, else returns your pending  
-        deposits for a given currency 
+        Returns your pending deposits for all currencies
+        if currency == None, else returns your pending
+        deposits for a given currency
 
         :param currency: String literal for the currency (optional)
         :type market: str
@@ -446,12 +433,12 @@ class Bittrex(object):
         """
         if not currency:
             currency = ""
-        return self.__call__('balance', "getpendingdeposits", 
+        return self.__call__('balance', "getpendingdeposits",
                              {"currencyname": currency})
 
     def get_deposit_address(self, currency):
         """
-        Returns your deposit address for a specified currency 
+        Returns your deposit address for a specified currency
 
         :param currency: String literal for the currency
         :type market: str
@@ -459,12 +446,12 @@ class Bittrex(object):
         :return: Deposit address
         :rtype : dict
         """
-        return self.__call__('balance', "getdepositaddress", 
+        return self.__call__('balance', "getdepositaddress",
                              {"currencyname": currency})
 
     def generate_deposit_address(self, currency):
         """
-        Generate a deposit address for a specified currency 
+        Generate a deposit address for a specified currency
 
         :param currency: String literal for the currency
         :type market: str
@@ -472,6 +459,6 @@ class Bittrex(object):
         :return: Deposit address
         :rtype : dict
         """
-        return self.__call__('balance', "generatedepositaddress", 
+        return self.__call__('balance', "generatedepositaddress",
                              {"currencyname": currency})
 
